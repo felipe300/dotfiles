@@ -14,6 +14,14 @@ Check your system installation method in [Git](https://git-scm.com/book/en/v2/Ge
 sudo apt install git-all
 ```
 
+### Zellij
+
+Check [Zellij](https://zellij.dev/) webpage
+
+```bash
+cargo install --locked zellij
+```
+
 ### Stow
 
 Check [GNU stow](https://www.gnu.org/software/stow/) webpage
@@ -35,4 +43,10 @@ Then use GNU stow to create symlinks
 
 ```bash
 stow .
+```
+
+In case of problems to create zellij symlinks
+
+```bash
+stow --adpot .
 ```

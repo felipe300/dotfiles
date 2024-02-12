@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zj="zellij"
+alias zjr="zellij --session rust --layout ~/dotfiles/.config/zellij/default_rust.kdl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -124,7 +126,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # pnpm
 export PNPM_HOME="/home/pipo/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+
 # bun completions
 [ -s "/home/pipo/.bun/_bun" ] && source "/home/pipo/.bun/_bun"
 # bun

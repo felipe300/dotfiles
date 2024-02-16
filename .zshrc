@@ -108,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zj="zellij"
 alias zjr="zellij --session rust --layout ~/dotfiles/.config/zellij/default_rust.kdl"
+alias zjt="zellij --session ts --layout ~/dotfiles/.config/zellij/default_ts.kdl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -1,18 +1,20 @@
 layout {
-  pane split_direction="vertical" {
-    pane size="65%"
-    pane size="35%" split_direction="horizontal" {
-      pane command="npm" {
-        args "run" "dev"
-        start_suspended true
-      }
-      pane command="ssh" {
-        args "srv.us" "-R 1:localhost:3000"
-        start_suspended true
+  tab name="Node environment" {
+    pane split_direction="vertical" {
+      pane size="65%"
+      pane stacked=true size="35%" split_direction="horizontal" {
+        pane command="ssh" expanded=false {
+          args "srv.us" "-R 1:localhost:3000"
+          start_suspended true
+        }
+        pane command="npm" {
+          args "run" "dev"
+          start_suspended true
+        }
       }
     }
-  }
-  pane size=1 borderless=true {
-    plugin location="zellij:compact-bar"
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
   }
 }

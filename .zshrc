@@ -106,9 +106,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias zj="zellij"
-alias zjr="zellij --session rust --layout ~/dotfiles/.config/zellij/default_rust.kdl"
-alias zjt="zellij --session ts --layout ~/dotfiles/.config/zellij/default_ts.kdl"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -134,10 +131,7 @@ export PATH="$PNPM_HOME:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# SWITCHER
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-
+# Nvim Switcher
 function nvims() {
   items=("default" "kickstart" "LazyVim")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
@@ -155,3 +149,8 @@ bindkey -s ^a "nvims\n"
 
 # Starship
 eval "$(starship init zsh)"
+
+# Bash Aliases
+if [[ -f ~/.bash_aliases ]]; then
+  . ~/.bash_aliases
+fi

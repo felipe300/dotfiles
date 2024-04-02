@@ -17,7 +17,7 @@ alias zjt='zellij --session ts --layout ~/dotfiles/.config/zellij/default_ts.kdl
 
 # Browser
 alias brave='brave-browser </dev/null >/dev/null 2>&1 & disown'
-alias firefox='firefox </dev/null >/dev/null 2>&1 & disown'
+alias fox='firefox </dev/null >/dev/null 2>&1 & disown'
 
 # SWITCHER
 alias nvim-lazy='NVIM_APPNAME=LazyVim nvim'

@@ -8,6 +8,10 @@ layout {
           start_suspended true
         }
         pane command="npm" {
+          args "run" "test"
+          start_suspended true
+        }
+        pane command="npm" {
           args "run" "dev"
           start_suspended true
         }

@@ -133,7 +133,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Nvim Switcher
 function nvims() {
-  items=("default" "kickstart" "LazyVim")
+  items=("default" "Kickstart" "LazyVim")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"

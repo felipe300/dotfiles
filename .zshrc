@@ -154,3 +154,11 @@ eval "$(starship init zsh)"
 if [[ -f ~/.bash_aliases ]]; then
   . ~/.bash_aliases
 fi
+
+# Bat (better cat) Theme
+# sudo apt install bat
+# mkdir -p ~/.local/bin
+# ln -s /usr/bin/batcat ~/.local/bin/bat
+# sudo dpkg -i bat_0.18.3_amd64.deb  # adapt version number and architecture
+# apk add bat
+export BAT_THEME=tokyonight_night

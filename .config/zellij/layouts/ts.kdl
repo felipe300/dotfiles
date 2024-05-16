@@ -1,0 +1,24 @@
+layout {
+  tab name="Node environment" {
+    pane split_direction="vertical" {
+      pane size="65%" name="lazy" focus=true borderless=true
+      pane stacked=true size="35%" split_direction="horizontal" {
+        pane command="ssh" expanded=false {
+          args "srv.us" "-R 1:localhost:3000"
+          start_suspended true
+        }
+        pane command="npm" {
+          args "run" "test"
+          start_suspended true
+        }
+        pane command="npm" {
+          args "run" "dev"
+          start_suspended true
+        }
+      }
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+  }
+}

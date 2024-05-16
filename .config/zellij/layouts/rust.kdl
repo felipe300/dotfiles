@@ -1,0 +1,17 @@
+layout {
+  pane split_direction="vertical" {
+    pane size="65%" name="lazy" focus=true borderless=true
+    pane size="35%" split_direction="horizontal" {
+      cargo { args "check"; }
+      cargo { args "run"; }
+      cargo { args "test"; }
+    }
+  }
+  pane size=1 borderless=true {
+    plugin location="zellij:compact-bar"
+  }
+  pane_template name="cargo" {
+    command "cargo"
+    start_suspended true
+  }
+}

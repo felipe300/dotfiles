@@ -21,7 +21,6 @@ alias fox='firefox </dev/null >/dev/null 2>&1 & disown'
 
 # SWITCHER
 alias nvim-lazy='NVIM_APPNAME=LazyVim nvim'
-alias nvim-kick='NVIM_APPNAME=kickstart nvim'
 
 # THEFUCK- correct last error in console
 eval $(thefuck --alias)

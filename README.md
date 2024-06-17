@@ -14,6 +14,14 @@ Check your system installation method in [Git](https://git-scm.com/book/en/v2/Ge
 sudo apt install git-all
 ```
 
+### Tmux
+
+Check your system installation method in [Tmux](https://github.com/tmux/tmux)
+
+```bash
+apt install tmux
+```
+
 ### Zellij
 
 Check [Zellij](https://zellij.dev/) webpage

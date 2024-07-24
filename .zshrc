@@ -115,3 +115,13 @@ export BAT_THEME=tokyonight_night
 
 # NOTE: zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# NOTE: yazi shell wrapper
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}

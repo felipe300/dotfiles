@@ -24,8 +24,7 @@ apt install tmux
 
 ### Kitty
 
-Check [Kitty](https://sw.kovidgoyal.net/kitty/) webpage
-I use this [webpage](https://linux.how2shout.com/how-to-install-kitty-terminal-on-ubuntu-22-04-or-20-04/) to install kitty for `PopOS`
+Check [Kitty](https://sw.kovidgoyal.net/kitty/) webpage, I use this [webpage](https://linux.how2shout.com/how-to-install-kitty-terminal-on-ubuntu-22-04-or-20-04/) to install kitty for `PopOS`
 
 ```bash
 sudo apt install kitty
@@ -33,8 +32,7 @@ sudo apt install kitty
 
 ### Yazi
 
-Check [Yazi](https://yazi-rs.github.io/) webpage
-I use this [webpage](https://lindevs.com/install-yazi-on-ubuntu) to install kitty for `PopOS`
+Check [Yazi](https://yazi-rs.github.io/) webpage, I use this [webpage](https://lindevs.com/install-yazi-on-ubuntu) to install kitty for `PopOS`
 
 #### Use your `nvim conf` in Yazi
 

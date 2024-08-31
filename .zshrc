@@ -125,3 +125,6 @@ function yy() {
   fi
   rm -f -- "$tmp"
 }
+
+# NOTE: GO path
+export PATH=$PATH:/usr/local/go/bin

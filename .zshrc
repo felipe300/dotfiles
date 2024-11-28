@@ -38,7 +38,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # NOTE: Nvim Switcher
 function nvims() {
-  items=("default" "LazyVim")
+  items=("default" "Kickstart" "LazyVim")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -128,3 +128,6 @@ function yy() {
 
 # NOTE: GO path
 export PATH=$PATH:/usr/local/go/bin
+
+# NOTE: set Editor
+export EDITOR=nvim

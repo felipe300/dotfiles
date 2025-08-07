@@ -22,7 +22,7 @@ alias fox='firefox </dev/null >/dev/null 2>&1 & disown'
 
 # NOTE:SWITCHER
 alias nvim-lazy='NVIM_APPNAME=LazyVim nvim'
-alias kvim='NVIM_APPNAME=Kickstart nvim'
+alias kvim='NVIM_APPNAME=kickstart nvim'
 
 # NOTE: THEFUCK- correct last error in console
 eval $(thefuck --alias)
@@ -34,3 +34,6 @@ alias lt="eza --tree --level=2 --long --icons --git --no-filesize --icons=always
 
 # NOTE: fzf "interactive nvim search"
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+
+# NOTE: nvim sudo - allows to edit files with no permissions
+alias nvsu="sudoedit nvim"

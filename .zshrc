@@ -22,14 +22,17 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# DENO
+export PATH="$PATH:/opt/nvim/"
+
+# NOTE: DENO
 export DENO_INSTALL="/home/pipo/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-# pnpm
+# NOTE: pnpm
 export PNPM_HOME="/home/pipo/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# NOTE: BUN
 # bun completions
 [ -s "/home/pipo/.bun/_bun" ] && source "/home/pipo/.bun/_bun"
 # bun
@@ -116,18 +119,31 @@ export BAT_THEME=tokyonight_night
 # NOTE: zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-# NOTE: yazi shell wrapper
-function yy() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
-
 # NOTE: GO path
 export PATH=$PATH:/usr/local/go/bin
 
 # NOTE: set Editor
 export EDITOR=nvim
+
+# fnm
+FNM_PATH="/home/pipo/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/pipo/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# fnm
+FNM_PATH="/home/pipo/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/pipo/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# jmeter -java
+export PATH=$PATH:/opt/jmeter/apache-jmeter-5.6.3/bin
+
+# NOTE: Terraform autocompletion
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

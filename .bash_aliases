@@ -5,9 +5,13 @@
 #  . ~/.bash_aliases
 #fi
 
+export EZA_FLAGS="--color=always --git --icons=always --no-filesize --no-time --no-user --no-permissions"
+
 # NOTE:System
 alias uu='sudo apt update && sudo apt upgrade -y'
 alias mkcd='mkcd_alias() { mkdir -p "$1" && cd "$1"; }; mkcd_alias'
+alias c='clear'
+alias v='nvim'
 
 # NOTE: Zellij
 # Remember to add "Nvim SWITCHER" to ".zshrc"
@@ -24,16 +28,16 @@ alias fox='firefox </dev/null >/dev/null 2>&1 & disown'
 alias nvim-lazy='NVIM_APPNAME=LazyVim nvim'
 alias kvim='NVIM_APPNAME=kickstart nvim'
 
-# NOTE: THEFUCK- correct last error in console
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
 # NOTE: eza
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias lt="eza --tree --level=2 --long --icons --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="eza $EZA_FLAGS"
+alias ll="eza --long $EZA_FLAGS"
+alias lt="eza --tree --level=2 --long --icons $EZA_FLAGS"
 
 # NOTE: fzf "interactive nvim search"
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 
 # NOTE: nvim sudo - allows to edit files with no permissions
 alias nvsu="sudoedit nvim"
+
+# NOTE: Curl
+alias pm="curl http://wttr.in/puerto-montt"

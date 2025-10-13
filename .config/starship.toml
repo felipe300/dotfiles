@@ -5,13 +5,10 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$fill\
 $cmd_duration\
 $line_break\
+$python\
 $character"""
-
-[fill]
-symbol =" "
 
 [directory]
 style = "blue"
@@ -41,6 +38,9 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
-min_time = 750
 format = "[$duration]($style) "
 style = "yellow"
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"

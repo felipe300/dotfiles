@@ -1,18 +1,22 @@
+# NOTE: ZSH INSTANT PROMPT 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# NOTE: Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
+# NOTE: Starship
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG=~/.config/starship.toml
+
 # NOTE: User configuration
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)" # Replace this line with the line below, and remove any other reference to "p10k"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export NVM_DIR="$HOME/.nvm"
@@ -55,20 +59,10 @@ function nvims() {
 # NOTE: Lazy Switcher bindkey
 bindkey -s ^a "nvims\n"
 
-# NOTE: Starship
-eval "$(starship init zsh)"
-
 # NOTE: Bash Aliases
 if [[ -f ~/.bash_aliases ]]; then
   . ~/.bash_aliases
 fi
-
-# NOTE: Bat (better cat) Theme
-# sudo apt install bat
-# mkdir -p ~/.local/bin
-# ln -s /usr/bin/batcat ~/.local/bin/bat
-# sudo dpkg -i bat_0.18.3_amd64.deb  # adapt version number and architecture
-# apk add bat
 
 # NOTE: fzf, install -> "Using git"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -98,8 +92,6 @@ export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 # Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
 _fzf_comprun() {
   local command=$1
   shift
@@ -125,7 +117,7 @@ export PATH=$PATH:/usr/local/go/bin
 # NOTE: set Editor
 export EDITOR=nvim
 
-# fnm
+# NOTE: FNM
 FNM_PATH="/home/pipo/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/pipo/.local/share/fnm:$PATH"
@@ -134,16 +126,13 @@ fi
 
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-# fnm
-FNM_PATH="/home/pipo/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/pipo/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
 # jmeter -java
 export PATH=$PATH:/opt/jmeter/apache-jmeter-5.6.3/bin
 
 # NOTE: Terraform autocompletion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+
+# NOTE: THEFUCK- correct last error in console
+eval $(thefuck --alias)
+eval $(thefuck --alias fk)

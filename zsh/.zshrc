@@ -1,29 +1,26 @@
+# NOTE:History
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+
+# NOTE: NVIM
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-
 export PATH="$HOME/.local/bin:$PATH"
-#export PATH="$PATH/opt/nvim/"
 
-
-# NOTE: ZSH INSTANT PROMPT 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search terraform vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-# NOTE: Starship
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship.toml
-
 # NOTE: User configuration
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # NOTE: DENO
 export DENO_INSTALL="/home/pipo/.deno"
@@ -130,6 +127,9 @@ export PATH=$PATH:/opt/jmeter/apache-jmeter-5.6.3/bin
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
-# NOTE: THEFUCK- correct last error in console
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
+# Created by `pipx` on 2026-03-08 01:49:40
+export PATH="$PATH:/home/pipo/.local/bin"
+
+# NOTE: Starship
+export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init zsh)"

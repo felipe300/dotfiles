@@ -6,11 +6,18 @@
 #fi
 
 export EZA_FLAGS="--color=always --git --icons=always --no-filesize --no-time --no-user --no-permissions"
+export EZA_FLAGS_FULL="--long --color=always --color-scale=all --git --icons=always"
 
 # NOTE:System
 alias uu='sudo apt update && sudo apt upgrade -y'
-alias mkcd='mkcd_alias() { mkdir -p "$1" && cd "$1"; }; mkcd_alias'
+alias cc='sudo apt autoremove && sudo apt autoclean'
+
+mkcd() {
+  mkdir -p "$1" && cd "$1" || exit;
+}
+
 alias c='clear'
+alias e='exit'
 alias v='nvim'
 
 # NOTE: Zellij
@@ -31,7 +38,7 @@ alias kvim='NVIM_APPNAME=kickstart nvim'
 # NOTE: eza
 alias ls="eza $EZA_FLAGS"
 alias ll="eza --long $EZA_FLAGS"
-alias lt="eza --tree --level=2 --long --icons $EZA_FLAGS"
+alias lp="eza $EZA_FLAGS_FULL"
 
 # NOTE: fzf "interactive nvim search"
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
@@ -41,3 +48,9 @@ alias nvsu="sudoedit nvim"
 
 # NOTE: Curl
 alias pm="curl http://wttr.in/puerto-montt"
+
+#NOTE: Clean Docker
+alias dockerclean="docker system prune -a --volumes -f"
+alias dstats="docker system df"
+alias up="docker compose up -d"
+alias down="docker compose down"

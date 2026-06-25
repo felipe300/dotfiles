@@ -1,87 +1,86 @@
-# My dotfiles
+# My Dotfiles
 
-This directory contains the dotfiles for my system
+This repository contains my personal configuration files (dotfiles) for development on **Pop!\_OS / Ubuntu**. It uses **GNU Stow** to manage symlinks cleanly.
 
-## Requirements
+## Requirements & Toolchain
 
-Ensure you have the following installed on your system
+Ensure you have the following core utilities installed on your system before deploying the dotfiles.
 
-### Git
+**Terminal & Multiplexers**
 
-Check your system installation method in [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-```bash
-sudo apt install git-all
-```
-
-### Tmux
-
-Check your system installation method in [Tmux](https://github.com/tmux/tmux)
-
-```bash
-apt install tmux
-```
-
-### Kitty
-
-Check [Kitty](https://sw.kovidgoyal.net/kitty/) webpage, I use this [webpage](https://linux.how2shout.com/how-to-install-kitty-terminal-on-ubuntu-22-04-or-20-04/) to install kitty for `PopOS`
+- **Kitty**: Fast, feature-rich, GPU-based terminal emulator.
 
 ```bash
 sudo apt install kitty
 ```
 
-### Yazi
-
-Check [Yazi](https://yazi-rs.github.io/) webpage, I use this [webpage](https://lindevs.com/install-yazi-on-ubuntu) to install kitty for `PopOS`
-
-#### Use your `nvim conf` in Yazi
-
-In case you open a file in yazi and you `config` do not open check your `yazi.toml` file in `~/.confi/yazi` and change
-
-```
-...
-
-[opener]
-edit = [
-  { run = '${EDITOR:=vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-  // FOR
-	{ run = 'nvim "$@"', desc = "$EDITOR", block = true, for = "unix" },
-...
-```
-
-### Zellij
-
-Check [Zellij](https://zellij.dev/) webpage
+- **Tmux**: Terminal multiplexer for workspace persistence.
 
 ```bash
-cargo install --locked zellij
+sudo apt install tmux
 ```
 
-### Stow
+- **Zellij**: A modern, layout-driven workspace alternative to Tmux.
 
-Check [GNU stow](https://www.gnu.org/software/stow/) webpage
+```bash
+language
+```
+
+**Core Utilities & Shell Enhancements**
+
+- **GNU Stow**: Symlink manager used to deploy these dotfiles.
 
 ```bash
 sudo apt install stow
 ```
 
-## Installation
+- **Starship**: The minimal, blazing-fast, and customizable prompt.
+- **FNM**: Fast Node Manager for managing Node/TypeScript runtimes.
+- **FZF**: Command-line fuzzy finder.
 
-First, check out the dotfiles `repo` in your $HOME directory using git
+**File Managers & CLI Tools**
+
+- **Yazi**: Blazing-fast terminal file manager written in Rust.
+- **Bat**: A `cat` clone with syntax highlighting (`tokyonight_night`).
+- **Eza**: A modern alternative to `ls`.
+
+## Post-Installation Configurations
+
+**Use Neovim inside Yazi**
+
+If Yazi opens files with standard `vi` instead of your custom Neovim configurations, update your `~/.config/yazi/yazi.toml` file to point directly to `nvim`:
+
+```toml
+[opener]
+edit = [
+  { run = 'nvim "$@"', desc = "Neovim", block = true, for = "unix" },
+]
+```
+
+**Neovim Configuration Switcher**
+
+The Zsh configuration includes an automated profile picker for Neovim setups (Default, Kickstart, LazyVim).
+
+- Trigger it inside your terminal by pressing: `Ctrl + A`
+
+## Installation & Deployment
+
+1. Clone the repository directly into your `$HOME` directory:
 
 ```bash
-git clone git@github.com/felipe300/dotfiles.git
+cd ~
+git clone git@github.com:felipe300/dotfiles.git
 cd dotfiles
 ```
 
-Then use GNU stow to create symlinks
+2. Deploy configurations using GNU Stow:
 
 ```bash
 stow .
 ```
 
-In case of problems to create zellij symlinks
+3. In case of conflicts (e.g., if default Zellij or terminal config files already exist), force Stow to adopt your existing environment system state into the symlinks:
 
 ```bash
-stow --adpot .
+stow --adopt .
 ```

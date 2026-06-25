@@ -115,7 +115,7 @@ export EDITOR=nvim
 FNM_PATH="/home/pipo/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="/home/pipo/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+  # eval "`fnm env`"
 fi
 
 eval "$(fnm env --use-on-cd --shell zsh)"
@@ -133,3 +133,28 @@ export PATH="$PATH:/home/pipo/.local/bin"
 # NOTE: Starship
 export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
+
+# Use native Zsh line editor widgets to search history safely
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Bind Arrow Keys so they don't break autocomplete or suggestion highlights
+bindkey '\e[A' up-line-or-beginning-search   # Arrow Up: search history matching prefix
+bindkey '\e[B' down-line-or-beginning-search # Arrow Down: search history matching prefix
+
+# Map Home & End keys properly for Kitty, Tmux, and standard terms
+typeset -g -A key
+key[Home]="${terminfo[khome]:-\e[H}"
+key[End]="${terminfo[kend]:-\e[F}"
+
+# Fallback escape sequences
+[[ "${key[Home]}" == "" ]] && key[Home]="\eOH"
+[[ "${key[End]}" == "" ]] && key[End]="\eOF"
+
+# Bind Home & End keys to actually move the cursor instead of searching history
+[[ -n "${key[Home]}" ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}" ]]  && bindkey "${key[End]}"  end-of-line
+
+# Zsh-autosuggestions tweak: Press Control + Space to accept a ghost text suggestion
+bindkey '^ ' autosuggest-accept

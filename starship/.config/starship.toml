@@ -1,3 +1,5 @@
+scan_timeout = 120
+
 format = """
 $username\
 $hostname\
@@ -8,6 +10,9 @@ $git_status\
 $cmd_duration\
 $line_break\
 $python\
+$bun\
+$nodejs\
+$lua\
 $character"""
 
 [directory]
@@ -44,3 +49,12 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[bun]
+format = 'via [🍔 $version](bold green) '
+
+[nodejs]
+format = 'via [🤖 $version](bold green) '
+
+[lua]
+format = 'via [🌕 $version](bold blue) '
